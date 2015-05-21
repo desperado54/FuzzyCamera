@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/jniLibs/armeabi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/jniLibs/armeabi-v7a" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/jniLibs/mips" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/jniLibs/x86" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/.classpath" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/.project" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/.settings" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/AndroidManifest.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/build.gradle" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/gen" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/javadoc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/lint.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/project.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/res" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/libs/opencv/src" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
