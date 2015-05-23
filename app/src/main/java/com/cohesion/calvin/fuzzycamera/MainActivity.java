@@ -28,8 +28,10 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
+import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
 import java.io.File;
@@ -56,6 +58,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
 
     private File mFaceCascadeFile;
     private CascadeClassifier mFaceClassifier;
+    private File mEyesCascadeFile;
+    private CascadeClassifier mEyesClassifier;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -79,6 +83,17 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
                         is.close();
                         os.close();
                         mFaceClassifier = new CascadeClassifier(mFaceCascadeFile.getAbsolutePath());
+
+                        is = getResources().openRawResource(R.raw.haarcascade_mcs_eyepair_small);
+                        mEyesCascadeFile = new File(cascadeDir, "haarcascade_mcs_eyepair_small.xml");
+                        os = new FileOutputStream(mEyesCascadeFile);
+
+                        while ((bytesRead = is.read(buffer)) != -1) {
+                            os.write(buffer, 0, bytesRead);
+                        }
+                        is.close();
+                        os.close();
+                        mEyesClassifier = new CascadeClassifier(mEyesCascadeFile.getAbsolutePath());
 
                     } catch (IOException e) {
                         Log.i(TAG, "Cascade files loaded successfully");
@@ -224,20 +239,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
         Mat rgba = inputFrame.rgba();
-        //Mat gray = inputFrame.gray();
-
-        //Core.flip(rgba, rgba, 1);
-
-//
-//        Core.flip(gray.t(), gray, -1);
-//        Core.flip(rgba.t(), rgba, -1);
-//
-        MatOfRect faces = EyeDetector.findPupils(rgba, mFaceClassifier);
-//
-        for (Rect rect : faces.toArray()) {
-            Core.rectangle(rgba, rect.tl(), rect.br(), new Scalar(0, 255, 0, 255));
-        }
-        faces.release();
+        MatOfRect eyes = EyeDetector.findEyes(rgba, mEyesClassifier);
         return rgba;
     }
 }
